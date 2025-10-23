@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+}
+nav{
+margin-left: 70px;
+}
+.navbar {
+    background-color: rgb(139, 139, 139);
+    width:90% ;
+    height: 60px;
+    border-radius:10px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 100px;
+      
+
+    }
+
+    .navbar a:hover {
+      color: darkcyan;
+    }
+    .karta{
+        border: 2px solid rgba(128, 128, 128, 0.329);
+        height: 400px;
+        width: 200px;
+    }
+    .kon{
+        display: flex;
+        justify-content: space-evenly;
+    }
+ 
