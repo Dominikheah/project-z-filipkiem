@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bieg Niepodległości – zapisy otwarte!</title>
+<link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<header class="header">
+<h1>Lokalna redakcja</h1>
+<nav class="nav" id="site-nav"></nav>
+</header>
+
+<div class="container" id="post-container"></div>
+
+<script>
+const site = { nav: [
+{ label: "Start", path: "index.html" },
+{ label: "O redakcji", path: "Or.html" },
+{ label: "Kategorie", path: "kat.html" },
+{ label: "Aktualności", path: "akt.html" },
+{ label: "Kontakt", path: "kon.html" }
+]};
+const navContainer = document.getElementById("site-nav");
+site.nav.forEach(item => { const link = document.createElement("a"); link.href = item.path; link.textContent = item.label; navContainer.appendChild(link); });
+
+const authors = [
+{ id: "martyna-grabowska", name: "Martyna Grabowska", role: "Redaktorka naczelna", description: "Koordynuje pracę redakcji, pisze o sprawach samorządowych.", avatar: "https://i.pravatar.cc/100?img=5" },
+{ id: "piotr-wasilewski", name: "Piotr Wasilewski", role: "Reporter", description: "Zajmuje się relacjami z interwencji i wydarzeń lokalnych.", avatar: "https://i.pravatar.cc/100?img=7" },
+{ id: "ola-janicka", name: "Ola Janicka", role: "Dziennikarka kulturalna", description: "Pisze o wydarzeniach kulturalnych i wywiadach z artystami.", avatar: "https://i.pravatar.cc/100?img=8" },
+{ id: "damian-sobczak", name: "Damian Sobczak", role: "Dziennikarz sportowy", description: "Relacjonuje mecze i wydarzenia sportowe w regionie.", avatar: "https://i.pravatar.cc/100?img=9" },
+{ id: "nina-krol", name: "Nina Król", role: "Redaktorka działu biznes", description: "Pisze o lokalnym biznesie i inicjatywach przedsiębiorców.", avatar: "https://i.pravatar.cc/100?img=10" }
+];
+
+const post = {
+title: "Bieg Niepodległości – zapisy otwarte!",
+excerpt: "W tym roku trasa liczy 5 km, start 11 listopada o 11:11.",
+cover: "https://picsum.photos/id/1084/600/400",
+authorId: "damian-sobczak"
+};
+
+const author = authors.find(a => a.id === post.authorId);
+const container = document.getElementById("post-container");
+container.innerHTML = `
+<h2>${post.title}</h2>
+<div class="announcement">
+<img class="cover" src="${post.cover}" alt="${post.title}">
+<p>${post.excerpt}</p>
+</div>
+<div class="author-card">
+<div class="author-avatar">
+<img src="${author.avatar}" alt="${author.name}">
+</div>
+<div class="author-info">
+<strong>${author.name}</strong><br>
+${author.role}<br>
+<p>${author.description}</p>
+<strong>Email:</strong> <a href="mailto:kontakt@lokalna-redakcja.pl">kontakt@lokalna-redakcja.pl</a><br>
+<a href="#">x</a> <a href="#">instagram</a>
+</div>
+</div>
+`;
+</script>
+</body>
+</html>

@@ -1,41 +1,241 @@
-body{
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Inter", sans-serif; background: #f3f4f6; color: #111827; }
+
+/* Nagłówek */
+.header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-nav{
-margin-left: 70px;
+.header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #0f172a; }
+
+.nav {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
 }
-.navbar {
-    background-color: rgb(139, 139, 139);
-    width:90% ;
-    height: 60px;
-    border-radius:10px ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav a {
+  color: #0ee92b; 
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav a:hover { color: #05b015; }
 
-    }
+/* Karty */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.card {
+  background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transition: transform .25s, box-shadow .25s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.card img {
+  width: 100%; height: 200px; object-fit: cover;
+}
+.card-content { padding: 1.2rem; display: flex; flex-direction: column; flex: 1; }
+.category {
+  color: #fff; font-size: .8rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 6px; display: inline-block;
+  margin-bottom: .8rem;
+}
+.card h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: .6rem; }
+.card p { font-size: .95rem; color: #4b5563; margin-bottom: 1rem; }
 
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      margin-left: 100px;
-      
+.meta { display: flex; align-items: center; justify-content: space-between; }
+.author { display: flex; align-items: center; gap: 8px; }
+.author img { width: 32px; height: 32px; border-radius: 50%; }
+.author span { font-size: .9rem; }
 
-    }
+.btn {
+  background: #0ea5e9; color: #fff; border: none;
+  padding: 8px 14px; border-radius: 8px;
+  font-size: .9rem; font-weight: 500; cursor: pointer;
+}
+.btn:hover { background: #0284c7; }
 
-    .navbar a:hover {
-      color: darkcyan;
-    }
-    .karta{
-        border: 2px solid rgba(128, 128, 128, 0.329);
-        height: 400px;
-        width: 200px;
-    }
-    .kon{
-        display: flex;
-        justify-content: space-evenly;
-    }
- 
+/* Stopka */
+.footer {
+  background: #fff; padding: 1rem; text-align: center;
+  font-size: .9rem; color: #4b5563; border-top: 1px solid #e5e7eb;
+}
+.footer a { color: #0ea5e9; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* Kartav2 */
+.kartav2 {
+  display: flex;
+  flex-direction: column; 
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  transition: 0.3s ease-in-out;
+}
+.kartav2:hover {
+    transform: scale(1.02);
+}
+.kartav2 img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.kartav2 .content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.kartav2 h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.kartav2 p {
+  margin: 0.25rem 0;
+}
+.kartav2 .socials {
+  margin-top: 1rem;
+}
+.kartav2 .socials a {
+  margin-right: 0.5rem;
+  color: #0ea5e9;
+  text-decoration: none;
+  font-weight: 500;
+}
+.kartav2 .socials a:hover {
+  color: #0284c7;
+}
+
+@media (min-width: 768px) {
+  .kartav2 {
+    flex-direction: row; 
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .kartav2 img {
+    width: 192px; 
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .kartav2 .content {
+    padding: 1.5rem;
+  }
+}
+/* Karty kategorii */
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.category-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  color: #fff;
+  text-align: center;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.category-card h3 {
+  margin: 10px 0;
+}
+
+.category-card p {
+  padding: 0 10px 10px;
+  font-size: 0.9rem;
+}
+
+/* Kontakt */
+.contact {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  text-align: center;
+}
+
+.contact h2 {
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.contact-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.contact-details h3 {
+  margin-bottom: 0.5rem;
+  color: #334155;
+}
+
+.contact-map img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  background: #0ee92b; /* zielony */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.social-links a:hover {
+  background: #05b015;
+}
+
+.btn.contact-btn {
+  background: #0ee92b; /* zielony przycisk w kontaktach */
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn.contact-btn:hover {
+  background: #05b015;
+}

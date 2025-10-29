@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="authors-container" class="max-w-6xl mx-auto px-4 py-12">
+  <h2 class="text-3xl font-bold mb-8 text-center">Nasza Redakcja</h2>
+</section>
+
+    <script>
+ // =====================
+// KONFIGURACJA STRONY
+// =====================
+const site = {
+  meta: {
+    title: "Lokalna redakcja",
+    description: "Wiadomości, kultura i sport z naszej gminy – codziennie najważniejsze lokalne tematy."
+  },
+  nav: [
+    { label: "Strona główna", path: "index.html" },
+  { label: "O Redakcji", path: "Or.html" },
+  { label: "Kategorie", path: "kat.html" },
+  { label: "Aktualności", path: "akt.html" },
+  { label: "Kontakt", path: "kon.html" },
+  ]
+};
+const authors = [
+  {
+    id: "martyna-grabowska",
+    name: "Martyna Grabowska",
+    role: "Redaktorka naczelna",
+    avatar: "https://i.pravatar.cc/100?img=5",
+    bio: "Koordynuje pracę redakcji, pisze o sprawach samorządowych.",
+    email: "martyna@lokalna-redakcja.pl",
+    socials: { x: "#", instagram: "#" },
+  },
+  {
+    id: "piotr-wasilewski",
+    name: "Piotr Wasilewski",
+    role: "Reporter",
+    avatar: "https://i.pravatar.cc/100?img=7",
+    bio: "Lubi tematy społeczne i szybkie relacje z miejsca zdarzeń.",
+    email: "piotr@lokalna-redakcja.pl",
+    socials: { facebook: "#", x: "#" },
+  },
+  {
+    id: "ola-janicka",
+    name: "Ola Janicka",
+    role: "Dziennikarka kulturalna",
+    avatar: "https://i.pravatar.cc/100?img=8",
+    bio: "Recenzuje wydarzenia kulturalne i rozmawia z artystami.",
+    email: "ola@lokalna-redakcja.pl",
+    socials: { instagram: "#" },
+  },
+  {
+    id: "damian-sobczak",
+    name: "Damian Sobczak",
+    role: "Dziennikarz sportowy",
+    avatar: "https://i.pravatar.cc/100?img=9",
+    bio: "Relacjonuje rozgrywki lokalnych drużyn i amatorki.",
+    email: "damian@lokalna-redakcja.pl",
+    socials: { x: "#" },
+  },
+];
+
+const container = document.getElementById("authors-container");
+
+authors.forEach(author => {
+  const socialsLinks = Object.entries(author.socials)
+    .map(([key, url]) => `<a href="${url}" class="text-blue-600 hover:text-blue-800">${key}</a>`)
+    .join(" ");
+
+  const card = document.createElement("div");
+  card.className = "kartav2 flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden mb-6";
+
+  card.innerHTML = `
+    <img src="${author.avatar}" alt="${author.name}" class="w-full md:w-48 object-cover">
+    <div class="p-6 flex flex-col justify-between">
+      <div>
+        <h3 class="text-xl font-bold mb-2">${author.name}</h3>
+        <p class="text-gray-500 mb-2">${author.role}</p>
+        <p class="text-gray-700 mb-4">${author.bio}</p>
+        <p class="text-gray-600"><strong>Email:</strong> ${author.email}</p>
+      </div>
+      <div class="mt-4 flex space-x-3">
+        ${socialsLinks}
+      </div>
+    </div>
+  `;
+
+  container.appendChild(card);
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.title = site.meta.title;
+
+
+  const header = document.createElement("header");
+  header.classList.add("header");
+
+  const h1 = document.createElement("h1");
+  h1.textContent = site.meta.title;
+  header.appendChild(h1);
+
+
+  const nav = document.createElement("nav");
+  nav.classList.add("nav");
+
+  site.nav.forEach((item) => {
+    const a = document.createElement("a");
+    a.href = item.path;
+    a.textContent = item.label;
+    nav.appendChild(a);
+  });
+
+  header.appendChild(nav);
+
+
+  document.body.prepend(header);
+
+
+
+
+
+
+
+
+
+
+    const footer = document.createElement("footer");
+  footer.classList.add("footer");
+  const p1 = document.createElement("p");
+  p1.textContent = `© 2025 ${site.meta.title}`;
+  const p2 = document.createElement("p");
+  p2.innerHTML = `Kontakt: <a href="mailto:${site.contact.email}">${site.contact.email}</a>`;
+  footer.appendChild(p1);
+  footer.appendChild(p2);
+  document.body.appendChild(footer);
+});
+
+    </script>
+</body>
+</html>

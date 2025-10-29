@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header class="header">
+  <h1>Lokalna Redakcja</h1>
+  <nav id="main-nav" class="nav"></nav>
+</header>
+
+  <section id="categories" class="categories-container"></section>
+    <script>
+const site = {
+  nav: [
+    { label: "Start", path: "index.html" },
+    { label: "O redakcji", path: "Or.html" },
+    { label: "Kategorie", path: "kat.html" },
+    { label: "Aktualności", path: "akt.html" },
+    { label: "Kontakt", path: "kon.html" },
+  ],
+};
+
+const categories = [
+  { id: "miasto-gmina", name: "Miasto i gmina", description: "Decyzje urzędu, inwestycje, komunikacja i sprawy mieszkańców.", color: "#0EA5E9", cover: "https://www.ugnowemiasto.pl/upload/ugnowemiasto/f9f81c56fa894ac8c098afddf7a51f3e.jpg" },
+  { id: "kultura", name: "Kultura lokalna", description: "Wydarzenia, recenzje, rozmowy z twórcami.", color: "#8B5CF6", cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8stYhbNdhIyKgksdTNbzytumfr9dWyTrH-Q&s" },
+  { id: "sport", name: "Sport lokalny", description: "Relacje z meczów, ligi amatorskie, sylwetki zawodników.", color: "#10B981", cover: "https://soccerskills.pl/media/cache/d460x290/uploads/2025/zasady%20pi%C5%82ka%20no%C5%BCna.jpg" },
+  { id: "biznes", name: "Biznes i rynek", description: "Lokalne firmy, targi, praca i inicjatywy przedsiębiorców.", color: "#F59E0B", cover: "https://www.s-net.pl/blog/wp-content/uploads/2018/11/rawpixel-594848-unsplash-793x470.jpg" },
+  { id: "interwencje", name: "Interwencje", description: "Zgłoszenia mieszkańców, bezpieczeństwo, ważne ostrzeżenia.", color: "#EF4444", cover: "https://krytykapolityczna.pl/wp-content/uploads/2024/04/policja-1.jpg" },
+];
+
+// --- Generowanie nawigacji ---
+const navContainer = document.getElementById("main-nav");
+
+if (navContainer) {
+  site.nav.forEach(item => {
+    const link = document.createElement("a");
+    link.href = item.path;
+    link.textContent = item.label;
+    navContainer.appendChild(link);
+  });
+}
+
+// --- Generowanie kart kategorii ---
+const categoriesContainer = document.getElementById("categories");
+
+if (categoriesContainer) {
+  categories.forEach(cat => {
+    const card = document.createElement("div");
+    card.classList.add("category-card");
+    card.style.backgroundColor = cat.color;
+
+    card.innerHTML = `
+      <img src="${cat.cover}" alt="${cat.name}">
+      <h3>${cat.name}</h3>
+      <p>${cat.description}</p>
+    `;
+
+    categoriesContainer.appendChild(card);
+  });
+}
+
+    </script>
+</body>
+</html>

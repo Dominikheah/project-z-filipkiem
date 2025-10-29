@@ -3,23 +3,27 @@
 // =====================
 const site = {
   meta: {
-    title: "Lokalna Redakcja",
-    description: "Aktualności, wydarzenia i wiadomości z naszego regionu.",
+    title: "Lokalna redakcja",
+    description: "Wiadomości, kultura i sport z naszej gminy – codziennie najważniejsze lokalne tematy.",
     language: "pl-PL",
   },
   nav: [
-
-  { label: "Strona główna", path: "index.html" },
-  { label: "O Redakcji", path: "Or.html" },
-  { label: "Kategorie", path: "kat.html" },
-  { label: "Aktualności", path: "akt.html" },
-  { label: "Kontakt", path: "kon.html" },
-,
-
+    { label: "Start", path: "index.html" },
+    { label: "O redakcji", path: "autorzy.html" },
+    { label: "Kategorie", path: "kategorie.html" },
+    { label: "Aktualności", path: "aktualnosci.html" },
+    { label: "Kontakt", path: "kontakt.html" },
+  ],
+  social: [
+    { id: "facebook", label: "Facebook", url: "#" },
+    { id: "instagram", label: "Instagram", url: "#" },
+    { id: "x", label: "X (Twitter)", url: "#" },
   ],
   contact: {
     email: "kontakt@lokalna-redakcja.pl",
     phone: "+48 600 111 222",
+    address: "ul. Rynek 5, 00-000 Nasze Miasto",
+    mapImage: "images/mapa-miasta.jpg",
   },
 };
 
@@ -27,27 +31,75 @@ const site = {
 // KATEGORIE
 // =====================
 const categories = [
-  { id: "miasto-gmina", name: "Miasto i gmina", color: "#0EA5E9" },
-  { id: "kultura", name: "Kultura", color: "#8B5CF6" },
-  { id: "sport", name: "Sport", color: "#10B981" },
-  { id: "biznes", name: "Biznes", color: "#F59E0B" },
-  { id: "interwencje", name: "Interwencje", color: "#EF4444" },
+  {
+    id: "miasto-gmina",
+    name: "Miasto i gmina",
+    description: "Decyzje urzędu, inwestycje, komunikacja i sprawy mieszkańców.",
+    color: "#0EA5E9",
+  },
+  {
+    id: "kultura",
+    name: "Kultura lokalna",
+    description: "Wydarzenia, recenzje, rozmowy z twórcami.",
+    color: "#8B5CF6",
+  },
+  {
+    id: "sport",
+    name: "Sport lokalny",
+    description: "Relacje z meczów, ligi amatorskie, sylwetki zawodników.",
+    color: "#10B981",
+  },
+  {
+    id: "biznes",
+    name: "Biznes i rynek",
+    description: "Lokalne firmy, targi, praca i inicjatywy przedsiębiorców.",
+    color: "#F59E0B",
+  },
+  {
+    id: "interwencje",
+    name: "Interwencje",
+    description: "Zgłoszenia mieszkańców, bezpieczeństwo, ważne ostrzeżenia.",
+    color: "#EF4444",
+  },
 ];
 
 // =====================
 // AUTORZY
 // =====================
 const authors = [
-  { id: "martyna-grabowska", name: "Martyna Grabowska", avatar: "https://i.pravatar.cc/100?img=5" },
-  { id: "piotr-wasilewski", name: "Piotr Wasilewski", avatar: "https://i.pravatar.cc/100?img=7" },
-  { id: "ola-janicka", name: "Ola Janicka", avatar: "https://i.pravatar.cc/100?img=8" },
-  { id: "damian-sobczak", name: "Damian Sobczak", avatar: "https://i.pravatar.cc/100?img=9" },
-  { id: "nina-krol", name: "Nina Król", avatar: "https://i.pravatar.cc/100?img=10" },
+  {
+    id: "martyna-grabowska",
+    name: "Martyna Grabowska",
+    role: "Redaktorka naczelna",
+    avatar: "images/autorzy/martyna.jpg",
+  },
+  {
+    id: "piotr-wasilewski",
+    name: "Piotr Wasilewski",
+    role: "Reporter",
+    avatar: "images/autorzy/piotr.jpg",
+  },
+  {
+    id: "ola-janicka",
+    name: "Ola Janicka",
+    role: "Dziennikarka kulturalna",
+    avatar: "images/autorzy/ola.jpg",
+  },
+  {
+    id: "damian-sobczak",
+    name: "Damian Sobczak",
+    role: "Dziennikarz sportowy",
+    avatar: "images/autorzy/damian.jpg",
+  },
+  {
+    id: "nina-krol",
+    name: "Nina Król",
+    role: "Redaktorka działu biznes",
+    avatar: "images/autorzy/nina.jpg",
+  },
 ];
 
-// =====================
-// POSTY / ARTYKUŁY
-// =====================
+
 const posts = [
   {
     id: "remont-ulicy-dlugiej",
@@ -158,93 +210,3 @@ const posts = [
     authorId: "martyna-grabowska",
   },
 ];
-
-// =====================
-// GENEROWANIE STRONY
-// =====================
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = site.meta.title;
-
-  // Nagłówek
-  const header = document.createElement("header");
-  header.classList.add("header");
-
-  const h1 = document.createElement("h1");
-  h1.textContent = site.meta.title;
-  header.appendChild(h1);
-
-  const nav = document.createElement("nav");
-  nav.classList.add("nav");
-  site.nav.forEach((item) => {
-    const a = document.createElement("a");
-    a.href = item.path;
-    a.textContent = item.label;
-    nav.appendChild(a);
-  });
-  header.appendChild(nav);
-  document.body.appendChild(header);
-
-  // Sekcja kart
-  const section = document.createElement("section");
-  section.classList.add("cards-container");
-
-  posts.forEach((post) => {
-    const category = categories.find((c) => c.id === post.categoryId);
-    const author = authors.find((a) => a.id === post.authorId);
-
-    const card = document.createElement("article");
-    card.classList.add("card");
-
-    const img = document.createElement("img");
-    img.src = post.cover;
-    img.alt = post.title;
-    card.appendChild(img);
-
-    const content = document.createElement("div");
-    content.classList.add("card-content");
-
-    const cat = document.createElement("span");
-    cat.classList.add("category");
-    cat.textContent = category.name;
-    cat.style.backgroundColor = category.color;
-    content.appendChild(cat);
-
-    const title = document.createElement("h2");
-    title.textContent = post.title;
-    content.appendChild(title);
-
-    const p = document.createElement("p");
-    p.textContent = post.excerpt;
-    content.appendChild(p);
-
-    const meta = document.createElement("div");
-    meta.classList.add("meta");
-
-    const authorDiv = document.createElement("div");
-    authorDiv.classList.add("author");
-
-    const avatar = document.createElement("img");
-    avatar.src = author.avatar;
-    avatar.alt = author.name;
-    authorDiv.appendChild(avatar);
-
-    const name = document.createElement("span");
-    name.textContent = author.name;
-    authorDiv.appendChild(name);
-
-    const btn = document.createElement("button");
-    btn.classList.add("btn");
-    btn.textContent = "Czytaj więcej";
-
-    meta.appendChild(authorDiv);
-    meta.appendChild(btn);
-
-    content.appendChild(meta);
-    card.appendChild(content);
-    section.appendChild(card);
-  });
-
-  document.body.appendChild(section);
-
-
-});

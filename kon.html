@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt | Lokalna redakcja</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Lokalna Redakcja</h1>
+    <nav id="main-nav" class="nav"></nav>
+  </header>
+
+  <main id="contact-page"></main>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
+    <script>
+        const site = {
+  meta: {
+    title: "Lokalna redakcja",
+    description:
+      "Wiadomości, kultura i sport z naszej gminy – codziennie najważniejsze lokalne tematy.",
+    language: "pl-PL",
+  },
+  nav: [
+    { label: "Start", path: "index.html" },
+    { label: "O redakcji", path: "Or.html" },
+    { label: "Kategorie", path: "kat.html" },
+    { label: "Aktualności", path: "akt.html" },
+    { label: "Kontakt", path: "kon.html" },
+  ],
+  social: [
+    { id: "facebook", label: "Facebook", url: "#" },
+    { id: "instagram", label: "Instagram", url: "#" },
+    { id: "x", label: "X (Twitter)", url: "#" },
+  ],
+  contact: {
+    email: "kontakt@lokalna-redakcja.pl",
+    phone: "+48 600 111 222",
+    address: "ul. Rynek 5, 00-000 Nasze Miasto",
+    mapImage: "images/mapa-miasta.jpg",
+  },
+};
+
+// =========================
+// GENEROWANIE NAWIGACJI
+// =========================
+const navContainer = document.getElementById("main-nav");
+if (navContainer) {
+  site.nav.forEach((item) => {
+    const link = document.createElement("a");
+    link.href = item.path;
+    link.textContent = item.label;
+    // aktywny link
+    if (window.location.pathname.includes(item.path)) {
+      link.classList.add("active");
+    }
+    navContainer.appendChild(link);
+  });
+}
+
+// =========================
+// STRONA KONTAKTOWA
+// =========================
+const contactPage = document.getElementById("contact-page");
+if (contactPage) {
+  contactPage.innerHTML = `
+    <section class="contact">
+      <h2>Kontakt z redakcją</h2>
+      <p>Masz pytanie, chcesz zgłosić temat lub przesłać materiał? Skontaktuj się z nami!</p>
+      <div class="contact-details">
+        <div>
+          <h3> E-mail</h3>
+          <p><a href="mailto:${site.contact.email}">${site.contact.email}</a></p>
+        </div>
+        <div>
+          <h3> Telefon</h3>
+          <p><a href="tel:${site.contact.phone}">${site.contact.phone}</a></p>
+        </div>
+        <div>
+          <h3> Adres</h3>
+          <p>${site.contact.address}</p>
+        </div>
+      </div>
+      <div class="contact-map">
+        <img src="${site.contact.mapImage}" alt="Mapa redakcji" />
+      </div>
+      <div class="social-links">
+        ${site.social
+          .map(
+            (s) =>
+              `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`
+          )
+          .join(" ")}
+      </div>
+    </section>
+  `;
+}
+
+    </script>
+</body>
+</html>
