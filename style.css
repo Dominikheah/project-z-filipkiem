@@ -1,0 +1,117 @@
+/* --- RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #272626;
+}
+
+/* --- NAVBAR --- */
+nav {
+  background-color: #4d4d4d; /* czerwony kolor redakcji */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+/* Logo (tekst po lewej) */
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+
+}
+
+/* Lista linków */
+ ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+/* Linki */
+a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #c08685; /* jaśniejszy odcień po najechaniu */
+}
+
+.square{
+  width: 350px;
+  height: 400px;
+  background-color: rgb(105, 103, 103);
+  display: inline-block;  /* żeby kwadraty stały obok siebie */
+  border-radius: 5px;
+
+}
+#content {
+  display: grid; /* włączamy grid */
+  grid-template-columns: repeat(4, 100px); /* 5 kolumn po 100px */
+  gap:300px; /* odstęp między kwadratami */
+justify-content: flex-start;
+margin-left: 150px;
+}
+
+
+/* --- RESPONSYWNOŚĆ --- */
+
+/* 📱 Telefony (ekran do 600px szerokości) */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column; /* logo nad menu */
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+  }
+
+  nav ul {
+    flex-direction: column; /* menu w pionie */
+    width: 100%;
+    gap: 10px;
+  }
+
+  nav li {
+    width: 100%;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #a00000;
+    border-radius: 5px;
+  }
+
+  nav a:hover {
+    background-color: #ff4444;
+    color: white;
+  }
+
+  #content {
+    padding: 20px;
+    font-size: 1em;
+  }
+}
+
+/* 💻 Tablety (ekrany do 900px szerokości) */
+@media (max-width: 900px) {
+  nav ul {
+    gap: 15px;
+  }
+
+  .logo {
+    font-size: 1.4em;
+  }
+}
+
