@@ -44,19 +44,21 @@ nav a:hover {
 }
 
 .square{
-  height: 250px;
- width: calc(25% - 40px);
+  height: 500px;
+ width: calc(25% - 50px);
   background-color: rgb(105, 103, 103);
- display: flex;
+ 
+ border-radius: 15px;
 }
 #content{
   display: flex;
   flex-wrap: wrap;
-  width: 100vw;
-  justify-content: space-between;
-gap: 15px;
+  width: 98vw;
+  gap: 40px;
 margin-top: 50px;
+justify-content: center;
 }
+
 
 
 
