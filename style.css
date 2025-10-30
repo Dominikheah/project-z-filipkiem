@@ -1,4 +1,4 @@
-/* --- RESET --- */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +7,9 @@
   background-color: #272626;
 }
 
-/* --- NAVBAR --- */
+
 nav {
-  background-color: #4d4d4d; /* czerwony kolor redakcji */
+  background-color: #4d4d4d; 
   color: white;
   display: flex;
   justify-content: space-between;
@@ -17,21 +17,21 @@ nav {
   padding: 12px 24px;
 }
 
-/* Logo (tekst po lewej) */
+
 .logo {
   font-size: 1.5em;
   font-weight: bold;
 
 }
 
-/* Lista linków */
+
  ul {
   list-style: none;
   display: flex;
   gap: 30px;
 }
 
-/* Linki */
+
 a {
   color: rgb(255, 255, 255);
   text-decoration: none;
@@ -40,32 +40,29 @@ a {
 }
 
 nav a:hover {
-  color: #c08685; /* jaśniejszy odcień po najechaniu */
+  color: #c08685; 
 }
 
 .square{
-  width: 350px;
-  height: 400px;
+  height: 250px;
+ width: calc(25% - 40px);
   background-color: rgb(105, 103, 103);
-  display: inline-block;  /* żeby kwadraty stały obok siebie */
-  border-radius: 5px;
-
+ display: flex;
 }
-#content {
-  display: grid; /* włączamy grid */
-  grid-template-columns: repeat(4, 100px); /* 5 kolumn po 100px */
-  gap:300px; /* odstęp między kwadratami */
-justify-content: flex-start;
-margin-left: 150px;
+#content{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  justify-content: space-between;
+gap: 15px;
+margin-top: 50px;
 }
 
 
-/* --- RESPONSYWNOŚĆ --- */
 
-/* 📱 Telefony (ekran do 600px szerokości) */
 @media (max-width: 600px) {
   nav {
-    flex-direction: column; /* logo nad menu */
+    flex-direction: column; 
     align-items: flex-start;
     padding: 15px;
   }
@@ -76,7 +73,7 @@ margin-left: 150px;
   }
 
   nav ul {
-    flex-direction: column; /* menu w pionie */
+    flex-direction: column; 
     width: 100%;
     gap: 10px;
   }
@@ -89,12 +86,12 @@ margin-left: 150px;
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #a00000;
+    background-color: black;
     border-radius: 5px;
   }
 
   nav a:hover {
-    background-color: #ff4444;
+    background-color: black;
     color: white;
   }
 
@@ -104,7 +101,7 @@ margin-left: 150px;
   }
 }
 
-/* 💻 Tablety (ekrany do 900px szerokości) */
+
 @media (max-width: 900px) {
   nav ul {
     gap: 15px;

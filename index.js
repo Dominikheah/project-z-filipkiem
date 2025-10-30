@@ -129,18 +129,18 @@ const authors = [
   },
 ];
 
-// Tworzymy navbar w JavaScript
+
 const navbarContainer = document.getElementById('navbar');
 
-// Tworzymy główny element <nav>
+
 const nav = document.createElement('nav');
 
-// Tworzymy logo po lewej
+
 const logo = document.createElement('div');
 logo.className = 'logo';
 logo.textContent = 'Lokalna Redakcja';
 
-// Tworzymy listę menu po prawej
+
 const menuItems = ['Start', 'O redakcji', 'Kategorie', 'Aktualności', 'Kontakt'];
 const ul = document.createElement('ul');
 
@@ -162,14 +162,10 @@ navbarContainer.appendChild(nav);
 
 const content = document.getElementById('content');
 
-for (let i = 1; i <= 8; i++) {
-
-  
+for (let i = 1; i <= 12; i++) {
 
   const square = document.createElement('div');
 square.className = 'square';
-
-
 content.appendChild(square);
 }
 
